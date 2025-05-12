@@ -1,0 +1,29 @@
+Verificar que configuración tiene el Router
+    Router# show running-config
+
+Al visualizar la información si estos estan en shutdown (Las interfaces están inactivas)
+Se entra a configuración global y se levantan las interfaces que utilizará
+    Router# configure terminal
+    Router(config) # interface gigabitEthernet 0/0
+    Router(config-if) # no shutdown
+    Router(config-if) # exit
+    Router(config) # interface gigabitEthernet 0/1
+    Router(config-if) # no shutdown
+    Router(config-if) # exit
+    Router(config) # exit
+    Router# show running-config
+
+Visualizar nuevo estadode las interfaces
+    Router# show ip interface brief
+
+Ver tablas del Router (Sale un comentario GETEWAY of last resort is not set)
+    Router# show ip route
+
+Configurar IP's del Router
+    Router# conf terminal
+    Router(config) # interface gigabitEthernet 0/0
+    Router(config-if) # ip address 10.1.1.1 255.255.255.0
+    Router(config-if) # exit
+    Router(config) # interface gigabitEthernet 0/1
+    Router(config-if) # ip address 10.2.2.1 255.255.255.0
+    Router(config-if) # exit

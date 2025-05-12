@@ -1,0 +1,47 @@
+Acceda al switch mediante el puerto de consola e ingrese al modo de configuración global
+    Switch> enable
+    Switch# configure terminal
+    Enter configuration commands, one per line. End with CNTL/Z.
+    Switch(config)#
+
+Asigne un nombre de host al switch según la tabla de direccionamiento.
+    Switch(config)# hostname S1
+
+Desactive la búsqueda de DNS.
+    S1(config)# no ip domain-lookup
+
+Configure y active la interfaz virtual del switch (SVI) para la LAN virtual (VLAN) 1.
+    S1(config)# interface vlan 1
+    S1(config-if)# ip address 192.168.1.2 255.255.255.0
+    S1(config-if)# no shutdown
+    S1(config-if)# end
+    *Mar 1 0:07:59.048: %SYS-5-CONFIG_I: Configured from console by console
+
+Visualizar información del Switch
+    S1# show interfaces vlan 1
+
+Mostrar la tabla ARP que tiene el Switch (tener en cuenta que solo mostrará IP-MAC)
+    S1# show arp
+
+Ver las direcciones MAC en el switch (Este mostrara las direcciones mac y a que puerto se comunican)
+    S1# show mac address-table
+
+Borrar todas las entradas dinamicas de la tabla de direcciones MAC que Switch
+    S2# clear mac address-table dynamic
+
+Asigne cisco como la contraseña de consola y la contraseña de vty
+    CONFIGURAR LÌNEA DE CONSOLA
+    SW1 (config)# line console 0
+    SW1 (config-line)# password cisco
+    SW1 (config-line)# login
+    SW1 (config-line)# exit
+    SW1 (config)#
+
+    CONFIGURAR CONTRASEÑA VTY (Acceso remoto)
+    SW1 (config)# line vty 0 15
+    SW1 (config-line)# password cisco   
+    SW1 (config-line)# login
+    SW1 (config-line)# exit
+
+Asigne class como la contraseña del modo EXEC privilegiado
+    SW1 (config)# enable secret class

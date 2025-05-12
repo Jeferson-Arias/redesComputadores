@@ -1,0 +1,2 @@
+Muestra toda la información del equipo
+    ipconfig /all
